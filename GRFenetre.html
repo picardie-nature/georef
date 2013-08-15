@@ -1,0 +1,24 @@
+<html lang="fr">
+	<head></head>
+	<body>
+	<script src="js/GRImg.js"></script>
+	<script src="js/GRPoint.js"></script>
+
+	<div style="position:fixed; top:5px; left:5px; width: 200px; height: 2em; background-color:white;">
+		Angle
+		<input type="text" size="3" id="angle" value="1"/>
+		<button id="moins">-</button>
+		<button id="plus">+</button>
+	</div>
+	<canvas style="cursor:crosshair;" id="canvas"></canvas>
+	<script>
+	img = new GRImg({
+		img_src: window.opener.document.__GRDocSrc,
+		id_canvas: "canvas",
+		id_b_plus: "plus",
+		id_b_moins: "moins",
+		id_i_angle: "angle"
+	});
+	</script>
+	</body>
+</html>
