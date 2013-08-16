@@ -25,7 +25,7 @@
 		var map = new Carto("map");
 		map.GRinit();
 
-		var srv = new GRServeur("http://localhost/georef/proxy.php");
+		var srv = new GRServeur("proxy.php");
 		var dossiers = srv.dossiers();
 		document.points = null;
 		document.nouveau_point = null;

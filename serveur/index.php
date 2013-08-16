@@ -1,7 +1,7 @@
 <?php
 // Attention : absolument pas sécurisé, pas fait pour être sur Internet
 require_once('config.php');
-if (array_search($_SERVER['REMOTE_ADDR'], explode(',',ADRS_IP_OK)) == false) {
+if (array_search($_SERVER['REMOTE_ADDR'], explode(',',ADRS_IP_OK)) === false) {
 	die("Acces denied {$_SERVER['REMOTE_ADDR']}");
 }
 switch ($_GET['action']) {
@@ -27,7 +27,9 @@ switch ($_GET['action']) {
 			$new = str_replace(".jp2",".jpg",$_GET["img"]);
 			if (!file_exists($new))
 				exec("convert {$_GET['img']} $new");
-			header("location: $new");
+			if (file_exists($new))
+				header("location: $new");
+			echo "echec convert {$_GET['img']} $new";
 		}
 		break;
 	case 'points':
