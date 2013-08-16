@@ -3,6 +3,8 @@
  * args : id_canvas, img_src, id_b_plus, id_b_moins
  */
 function GRImg(args) {
+	this.imgref = args.img_src;
+
 	// diagonale de l'image
 	this.d = null;
 	// diagonale / 2 de l'image
@@ -64,7 +66,7 @@ GRImg.prototype.canvas_click = function (evt) {
 	var ptImg = this.__GRImg.coordCanvas2Img(ptCanvas);
 	var ptCanv = this.__GRImg.coordImg2Canvas(ptImg);
 	this.__GRImg.marqueur(ptCanv,"red");
-	window.opener.document.nouveau_point(ptImg);
+	window.opener.document.set_nouveau_point(this.__GRImg.imgref, ptImg);
 }
 
 GRImg.prototype.angle_plus = function (n) {

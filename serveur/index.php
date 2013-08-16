@@ -51,5 +51,22 @@ switch ($_GET['action']) {
 		}
 		echo json_encode($points);
 		break;
+	case 'point_enregistre':
+		if (file_exists($_GET["img"])) {
+			$f_points = "{$_GET['img']}.points";
+			if (file_exists($f_points)) {
+				$date = strftime("%Y-%m-%d_%Hh%m.%s");
+				copy($f_points, "$f_points-$date.backup");
+				$f = fopen($f_points, 'a');
+			} else {
+				$f = fopen($f_points, 'w');
+				fwrite($f, "mapX,mapY,pixelX,pixelY,enable\n");
+			}
+
+			fwrite($f, sprintf("%F,%F,%d,%d,%d\n",$_GET['mapX'],$_GET['mapY'],$_GET['pixelX'],($_GET['pixelY']*-1),$_GET['enable']));
+			fclose($f);
+			break;
+		}
+		break;
 }
 ?>

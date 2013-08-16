@@ -31,3 +31,13 @@ GRServeur.prototype.points = function (img) {
 GRServeur.prototype.url_img = function (img) {
 	return this.base_url+"?action=image&img="+img;
 };
+
+GRServeur.prototype.point_enregistre = function (img, point) {
+	var q = "action=point_enregistre&img="+img;
+	q += "&mapX="+point.mapX;
+	q += "&mapY="+point.mapY;
+	q += "&pixelX="+point.pixelX;
+	q += "&pixelY="+point.pixelY;
+	q += "&enable="+point.enable;
+	return this.query(q);
+};
