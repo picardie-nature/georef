@@ -67,26 +67,5 @@ switch ($_GET['action']) {
 			fclose($f);
 		}
 		break;
-	case 'mapfile':
-		if (file_exists($_GET["dossier"])) {
-			$layers_txt = "";
-			foreach (glob("./{$_GET['dossier']}/*_georef.tif") as $f) {
-				$path = getcwd();
-				$layers_txt .= "
-        LAYER
-                TYPE raster
-                NAME \"$f\"
-                DATA \"$path/$f\"
-        END
-				";
-				
-			}
-			$mapfile = file_get_contents("tpl_mapfile.txt");
-			$mapfile = str_replace("__GR_LAYERS", $layers_txt,$mapfile);
-			$mf = fopen("./{$_GET['dossier']}/images.map","w");
-			fwrite($mf, $mapfile);
-			fclose($mf);
-		}
-		break;
 }
 ?>
