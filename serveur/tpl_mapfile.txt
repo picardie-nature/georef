@@ -1,0 +1,15 @@
+MAP
+	EXTENT 582000 6847000 793000 7034000
+	MAXSIZE 50000
+        PROJECTION
+		"init=epsg:2154"
+	END
+	WEB
+		METADATA
+			wms_title "Anciennes prises de vues aerienne"
+			wms_srs "EPSG:2154"
+			"ows_enable_request" "*"
+		END
+	END
+	__GR_LAYERS
+END
