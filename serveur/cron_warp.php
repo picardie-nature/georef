@@ -43,11 +43,12 @@ foreach (glob("*") as $d) {
 	if (file_exists($d)) {
 		$layers_txt = "";
 		foreach (glob("./{$d}/*_georef.tif") as $f) {
+			$nom = str_replace("_georef.tif","",basename($f));
 			$path = getcwd();
 			$layers_txt .= "
         LAYER
                 TYPE raster
-                NAME \"$f\"
+                NAME \"$nom\"
                 DATA \"$path/$f\"
         END
 				";
